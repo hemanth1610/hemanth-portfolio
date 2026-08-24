@@ -1,0 +1,1429 @@
+/* ==============================
+   ROOT & RESET
+================================= */
+
+:root {
+    --bg: #080b12;
+    --bg-secondary: #0e1420;
+    --card: rgba(18, 25, 38, 0.8);
+    --card-solid: #111927;
+
+    --text: #f5f7fb;
+    --text-secondary: #aab3c2;
+    --muted: #727b8c;
+
+    --primary: #6c63ff;
+    --primary-light: #918cff;
+    --secondary: #00d4aa;
+
+    --border: rgba(255, 255, 255, 0.09);
+
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+    --radius: 20px;
+    --transition: all 0.3s ease;
+}
+
+body.light-theme {
+    --bg: #f5f7fb;
+    --bg-secondary: #eef1f7;
+    --card: rgba(255, 255, 255, 0.85);
+    --card-solid: #ffffff;
+
+    --text: #171c27;
+    --text-secondary: #5f6878;
+    --muted: #7b8494;
+
+    --border: rgba(0, 0, 0, 0.08);
+    --shadow: 0 20px 50px rgba(25, 35, 55, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body,
+.header,
+.skill-category,
+.education-card,
+.strength-card,
+.highlight-card,
+.contact-form,
+.stat-card {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-inline-size: 100%;
+    display: block;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ==============================
+   BACKGROUND
+================================= */
+
+.background-glow {
+    position: fixed;
+    inline-size: 450px;
+    block-size: 450px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.glow-one {
+    background: var(--primary);
+    inset-block-start: -150px;
+    inset-inline-start: -150px;
+}
+
+.glow-two {
+    background: var(--secondary);
+    inset-inline-end: -200px;
+    inset-block-start: 40%;
+}
+
+
+/* ==============================
+   COMMON
+================================= */
+
+.section {
+    inline-size: min(1180px, 90%);
+    margin: 0 auto;
+    padding: 110px 0;
+}
+
+.section-heading {
+    margin-block-end: 60px;
+}
+
+.section-label {
+    color: var(--secondary);
+    font-family: "Fira Code", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    margin-block-end: 12px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    max-inline-size: 750px;
+}
+
+.section-heading h2 span,
+.hero h1 span,
+.resume-content h2 span {
+    color: var(--primary-light);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px 24px;
+    border-radius: 10px;
+
+    font-weight: 600;
+    border: 1px solid transparent;
+
+    transition: var(--transition);
+}
+
+.btn-primary {
+    color: white;
+    background: var(--primary);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
+}
+
+.btn-secondary {
+    border-color: var(--border);
+    background: transparent;
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--card-solid);
+    border-color: var(--primary);
+}
+
+
+/* ==============================
+   NAVBAR
+================================= */
+
+.header {
+    position: fixed;
+    inset-block-start: 0;
+    inline-size: 100%;
+    z-index: 1000;
+
+    background: rgba(8, 11, 18, 0.7);
+    backdrop-filter: blur(18px);
+    border-block-end: 1px solid transparent;
+
+    transition: var(--transition);
+}
+
+body.light-theme .header {
+    background: rgba(245, 247, 251, 0.75);
+}
+
+.header.scrolled {
+    border-block-end-color: var(--border);
+}
+
+.navbar {
+    inline-size: min(1180px, 92%);
+    block-size: 75px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo,
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--secondary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-btn,
+.menu-btn {
+    inline-size: 42px;
+    block-size: 42px;
+
+    border-radius: 10px;
+    border: 1px solid var(--border);
+
+    background: var(--card);
+    color: var(--text);
+
+    font-size: 1rem;
+}
+
+.menu-btn {
+    display: none;
+}
+
+
+/* ==============================
+   HERO
+================================= */
+
+.hero {
+    inline-size: min(1180px, 90%);
+    min-block-size: 100vh;
+    margin: auto;
+    padding-block-start: 100px;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 14px;
+    margin-block-end: 22px;
+
+    color: var(--text-secondary);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+
+    font-size: 0.8rem;
+}
+
+.availability span {
+    inline-size: 9px;
+    block-size: 9px;
+
+    background: var(--secondary);
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 5px rgba(0, 212, 170, 0.12);
+}
+
+.hero-greeting {
+    color: var(--text-secondary);
+    margin-block-end: 8px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-block-end: 20px;
+}
+
+.hero h2 {
+    min-block-size: 40px;
+    color: var(--secondary);
+    font-family: "Fira Code", monospace;
+    font-size: clamp(1rem, 2.5vw, 1.45rem);
+    margin-block-end: 22px;
+}
+
+.cursor {
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero-description {
+    max-inline-size: 650px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 32px 0 28px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a,
+.footer-socials a {
+    inline-size: 42px;
+    block-size: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    color: var(--text-secondary);
+    background: var(--card);
+
+    transition: var(--transition);
+}
+
+.social-links a:hover,
+.footer-socials a:hover {
+    color: white;
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-wrapper {
+    inline-size: min(390px, 90vw);
+    aspect-ratio: 1;
+
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.profile-ring {
+    position: absolute;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+.ring-one {
+    inline-size: 100%;
+    block-size: 100%;
+    animation: rotate 20s linear infinite;
+}
+
+.ring-two {
+    inline-size: 82%;
+    block-size: 82%;
+    border-style: dashed;
+    animation: rotateReverse 15s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.profile-card {
+    inline-size: 65%;
+    block-size: 65%;
+    overflow: hidden;
+
+    border-radius: 30px;
+    border: 2px solid rgba(108, 99, 255, 0.5);
+
+    background: var(--card-solid);
+    box-shadow: var(--shadow);
+
+    transform: rotate(-3deg);
+}
+
+.profile-card img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+}
+
+.floating-card {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    background: var(--card-solid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.floating-card i {
+    color: var(--secondary);
+    font-size: 1rem;
+}
+
+.card-code {
+    inset-block-start: 8%;
+    inset-inline-start: -5%;
+}
+
+.card-api {
+    inset-inline-end: -8%;
+    inset-block-start: 45%;
+}
+
+.card-database {
+    inset-inline-start: 5%;
+    inset-block-end: 5%;
+}
+
+
+/* ==============================
+   STATS
+================================= */
+
+.stats-section {
+    inline-size: min(1180px, 90%);
+    margin: -30px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    overflow: hidden;
+    background: var(--card);
+}
+
+.stat-card {
+    padding: 28px;
+    text-align: center;
+
+    border-inline-end: 1px solid var(--border);
+}
+
+.stat-card:last-child {
+    border-inline-end: none;
+}
+
+.stat-card h3 {
+    color: var(--primary-light);
+    font-size: 1.8rem;
+}
+
+.stat-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ==============================
+   ABOUT
+================================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-block-end: 22px;
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-block-start: 8px;
+
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.highlight-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px;
+    margin-block-end: 16px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    transition: var(--transition);
+}
+
+.highlight-card:hover {
+    transform: translateX(8px);
+    border-color: rgba(108, 99, 255, 0.5);
+}
+
+.highlight-icon {
+    inline-size: 50px;
+    block-size: 50px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--primary-light);
+    background: rgba(108, 99, 255, 0.12);
+
+    border-radius: 12px;
+}
+
+.highlight-card h3 {
+    font-size: 1rem;
+    margin-block-end: 4px;
+}
+
+.highlight-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ==============================
+   SKILLS
+================================= */
+
+.skills-section {
+    background: transparent;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.skill-category {
+    min-block-size: 260px;
+
+    padding: 28px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    border-color: rgba(108, 99, 255, 0.5);
+}
+
+.category-icon {
+    inline-size: 52px;
+    block-size: 52px;
+
+    display: grid;
+    place-items: center;
+
+    margin-block-end: 22px;
+
+    color: var(--secondary);
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: 14px;
+
+    font-size: 1.25rem;
+}
+
+.skill-category h3 {
+    margin-block-end: 20px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tags span,
+.project-tech span,
+.timeline-tags span {
+    padding: 6px 10px;
+
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    font-size: 0.75rem;
+}
+
+
+/* ==============================
+   PROJECTS
+================================= */
+
+.projects-section {
+    inline-size: min(1280px, 92%);
+}
+
+.project-card {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+    gap: 55px;
+
+    padding: 40px;
+    margin-block-end: 40px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+
+    overflow: hidden;
+}
+
+.project-reverse .project-image {
+    order: 2;
+}
+
+.project-image {
+    block-size: 380px;
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 20px;
+    background: var(--card-solid);
+}
+
+.project-image img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.06);
+}
+
+.project-number {
+    position: absolute;
+    inset-block-start: 16px;
+    inset-inline-start: 16px;
+
+    padding: 8px 12px;
+
+    color: white;
+    background: var(--primary);
+    border-radius: 8px;
+
+    font-family: "Fira Code", monospace;
+    font-size: 0.8rem;
+}
+
+.project-type {
+    color: var(--secondary);
+    font-family: "Fira Code", monospace;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    margin-block-end: 10px;
+}
+
+.project-content h3 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.25;
+    margin-block-end: 16px;
+}
+
+.project-content > p:not(.project-type) {
+    color: var(--text-secondary);
+    margin-block-end: 20px;
+}
+
+.project-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    margin-block-end: 20px;
+}
+
+.project-features span {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+.project-features i {
+    color: var(--secondary);
+    margin-inline-end: 5px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-block-end: 24px;
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.project-link:hover {
+    color: var(--primary-light);
+}
+
+
+/* ==============================
+   TIMELINE
+================================= */
+
+.timeline {
+    max-inline-size: 850px;
+    margin: auto;
+    padding-inline-start: 40px;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+
+    inset-inline-start: 8px;
+    inset-block-start: 0;
+    inset-block-end: 0;
+
+    inline-size: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    padding-block-end: 35px;
+}
+
+.timeline-dot {
+    position: absolute;
+
+    inline-size: 18px;
+    block-size: 18px;
+
+    inset-inline-start: -40px;
+    inset-block-start: 25px;
+
+    background: var(--primary);
+    border: 4px solid var(--bg);
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-content {
+    padding: 25px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: translateX(8px);
+    border-color: rgba(108, 99, 255, 0.5);
+}
+
+.timeline-year {
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-family: "Fira Code", monospace;
+}
+
+.timeline-content h3 {
+    margin: 8px 0;
+    font-size: 1.2rem;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-block-start: 16px;
+}
+
+
+/* ==============================
+   EDUCATION
+================================= */
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.education-card {
+    position: relative;
+
+    padding: 28px;
+    min-block-size: 260px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+}
+
+.education-card:hover {
+    transform: translateY(-8px);
+}
+
+.education-year {
+    position: absolute;
+    inset-block-start: 18px;
+    inset-inline-end: 20px;
+
+    color: var(--muted);
+    font-family: "Fira Code", monospace;
+    font-size: 0.8rem;
+}
+
+.education-icon {
+    inline-size: 55px;
+    block-size: 55px;
+
+    display: grid;
+    place-items: center;
+
+    margin-block-end: 25px;
+
+    color: var(--primary-light);
+    background: rgba(108, 99, 255, 0.12);
+    border-radius: 15px;
+}
+
+.education-card h3 {
+    font-size: 1rem;
+    margin-block-end: 8px;
+}
+
+.education-card p {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    margin-block-end: 16px;
+}
+
+.education-card strong {
+    color: var(--secondary);
+    font-size: 1.3rem;
+}
+
+
+/* ==============================
+   STRENGTHS
+================================= */
+
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.strength-card {
+    padding: 30px 24px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+}
+
+.strength-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 212, 170, 0.4);
+}
+
+.strength-card i {
+    color: var(--secondary);
+    font-size: 1.6rem;
+    margin-block-end: 20px;
+}
+
+.strength-card h3 {
+    margin-block-end: 8px;
+}
+
+.strength-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ==============================
+   RESUME CTA
+================================= */
+
+.resume-section {
+    inline-size: min(1180px, 90%);
+    margin: 30px auto 80px;
+
+    padding: 45px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(108, 99, 255, 0.2),
+        rgba(0, 212, 170, 0.08)
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+}
+
+.resume-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.resume-content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-block-end: 10px;
+}
+
+.resume-content > div > p:last-child {
+    max-inline-size: 650px;
+    color: var(--text-secondary);
+}
+
+
+/* ==============================
+   CONTACT
+================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+}
+
+.contact-info > h3 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-block-end: 15px;
+}
+
+.contact-info > p {
+    color: var(--text-secondary);
+    margin-block-end: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 16px;
+    margin-block-end: 12px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    inline-size: 45px;
+    block-size: 45px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--secondary);
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: 10px;
+}
+
+.contact-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.contact-item strong {
+    font-size: 0.85rem;
+}
+
+.contact-form {
+    padding: 30px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.form-group {
+    margin-block-end: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-block-end: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    inline-size: 100%;
+
+    padding: 13px 15px;
+
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    outline: none;
+}
+
+body.light-theme .form-group input,
+body.light-theme .form-group textarea {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+.footer {
+    inline-size: min(1180px, 90%);
+    margin: auto;
+
+    padding: 45px 0 30px;
+
+    text-align: center;
+
+    border-block-start: 1px solid var(--border);
+}
+
+.footer > p {
+    color: var(--text-secondary);
+    margin: 12px 0;
+    font-size: 0.85rem;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.copyright {
+    color: var(--muted) !important;
+    font-size: 0.75rem !important;
+}
+
+
+/* ==============================
+   SCROLL TOP
+================================= */
+
+.scroll-top {
+    position: fixed;
+
+    inset-inline-end: 25px;
+    inset-block-end: 25px;
+
+    inline-size: 45px;
+    block-size: 45px;
+
+    display: grid;
+    place-items: center;
+
+    color: white;
+    background: var(--primary);
+
+    border: none;
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+    transition: var(--transition);
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   SCROLL REVEAL
+================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 1050px) {
+
+    .skills-grid,
+    .education-grid,
+    .strengths-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        gap: 35px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        inset-block-start: 75px;
+        inset-inline-start: 0;
+
+        inline-size: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0;
+        padding: 20px 4%;
+
+        background: var(--card-solid);
+        border-block-end: 1px solid var(--border);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links li {
+        inline-size: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 0;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+
+        padding-block-start: 140px;
+        padding-block-end: 70px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-visual {
+        order: -1;
+    }
+
+    .profile-wrapper {
+        inline-size: min(320px, 80vw);
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .project-card,
+    .project-reverse {
+        grid-template-columns: 1fr;
+        padding: 25px;
+    }
+
+    .project-reverse .project-image {
+        order: 0;
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card:nth-child(2) {
+        border-inline-end: none;
+    }
+
+    .stat-card:nth-child(-n+2) {
+        border-block-end: 1px solid var(--border);
+    }
+
+    .resume-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-heading {
+        margin-block-end: 40px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero-buttons {
+        inline-size: 100%;
+        justify-content: center;
+    }
+
+    .skills-grid,
+    .education-grid,
+    .strengths-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-section {
+        inline-size: 92%;
+    }
+
+    .project-image {
+        block-size: 250px;
+    }
+
+    .project-features {
+        grid-template-columns: 1fr;
+    }
+
+    .project-links {
+        flex-wrap: wrap;
+    }
+
+    .timeline {
+        padding-inline-start: 28px;
+    }
+
+    .timeline-dot {
+        inset-inline-start: -28px;
+    }
+
+    .resume-section {
+        padding: 30px;
+    }
+
+    .floating-card {
+        font-size: 0.65rem;
+        padding: 8px 10px;
+    }
+
+    .card-code {
+        inset-inline-start: -10%;
+    }
+
+    .card-api {
+        inset-inline-end: -10%;
+    }
+}
